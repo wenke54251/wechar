@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- 配置为开发模式，一旦文件改动，不需要重启，会立即生效 -->
+    <constant name="struts.devMode" value="true" />
+    <!-- 把扩展名设置为action -->
+    <constant name="struts.action.extension" value="action" />
+    <!-- 把主题配置为simple -->
+    <constant name="struts.ui.theme" value="simple" />
+   <package name="default" namespace="/" extends="struts-default">
+   		<action name="member_*" class="memberAction" method="{1}">
+		    <result name="childbinding1">/childbinding1.jsp</result>
+		    <result name="toBindingUI">/bindingUI.jsp</result>
+            <result name="toParentBinding">/parentBinding.jsp</result>
+            <result name="toParentBinding1">/parentbinding1.jsp</result>
+            <result name="toChildBinding">/childbinding.jsp</result>
+            <result name="toBindingA">/bindingA.jsp</result>
+            <result name="toBindingParent">/bindingParent.jsp</result>
+            <result name="message">/message.jsp</result>
+            <result name="toerror">/bindingError.jsp</result>
+            <result name="json" type="json">
+				<param name="includeProperties">jsonResult</param>
+			</result>
+		</action>
+    </package>
+</struts>

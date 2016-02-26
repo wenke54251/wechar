@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_9" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <display-name>WeChatSystem</display-name>
+
+	<!-- struts核心过滤器 -->
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+
+	<!-- 配置spring的用於初始化容器對象的监听器-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext*.xml</param-value>
+    </context-param>
+	
+	<!-- 配置log4j配置文件的路径，可以是xml或 properties（此参数必须配）--> 
+	<context-param>
+	   <param-name>log4jConfigLocation</param-name>
+	 <param-value>classpath:config/log4j/log4j.properties</param-value>
+	</context-param> 
+	<!-- 使用spring的监听器,当应用启动时来读取log4j的配置文件 --> 
+	<listener>
+	<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+</web-app>
